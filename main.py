@@ -1,12 +1,11 @@
 from flask import Flask, request
 import requests
-import os
 
 app = Flask(__name__)
 
-# Your Telegram bot settings (set these in Render environment variables)
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+# Telegram bot token and chat ID (hardcoded for now)
+TELEGRAM_TOKEN = "8168936180:AAEQ8D70YgGXeVS-WhDY8cPi8szazPobqcU"
+TELEGRAM_CHAT_ID = "-1002881738496"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -21,8 +20,6 @@ def webhook():
     requests.post(telegram_url, data=payload)
 
     return "ok", 200
-
-
 
 
 
